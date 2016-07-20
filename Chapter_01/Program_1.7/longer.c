@@ -2,7 +2,6 @@
 #include <stdio.h> /* Include the header file for standard input/output
 		    * We can see this preprocessing directive because it begins with "#".
 		    * The "stdio.h" file provides the definitions needed to use "printf()"
-		    * 
 		    */
 int main(void) /* We define the start function "main" specifying that it returns an integer value. */
 { /* This is the very begining of the function body */

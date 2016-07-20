@@ -6,8 +6,10 @@
 # *~
 #
 # Kybrnts.- 2016-05-26
-# Exclude all except files w/extension, but also emacs backup files
+# Exclude all except files w/extension, but also emacs backup files, and compiled/object files
 *
 !*.*
-*~
+!*/
+*.[oa]
+*~ 
 

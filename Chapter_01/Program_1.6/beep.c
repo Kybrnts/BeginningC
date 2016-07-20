@@ -2,6 +2,6 @@
 #include <stdio.h>
 
 int main(void) {
-  printf("Be careful!!\a\n");
+  printf("Be careful!!\n\a"); /* \a esc. seq. in an output string sounds a beep */
   return 0;
 }

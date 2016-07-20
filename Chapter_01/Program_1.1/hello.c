@@ -2,6 +2,6 @@
 #include <stdio.h>
 
 int main(void) {
-  printf("Hello World!");
+  printf("Hello World!\n");   /* We added de EOL char at the end */
   return 0;
 }
