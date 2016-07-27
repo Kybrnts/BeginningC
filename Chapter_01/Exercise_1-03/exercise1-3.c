@@ -6,6 +6,6 @@
 #include <stdio.h>
 
 int main(void) {
-  printf("\"I'ts Freezing in here,\" he said coldly.");
+  printf("\"I'ts Freezing in here,\" he said coldly.\n");
   return 0;
 }

@@ -17,9 +17,9 @@ int main(void) {
     ex3 = last + 2;      /* Add 2 to 'Z' */
 
   /* This statement interprets the stored values as characters that should be output left-aligned with a width of 5. */
-  printf("Character values %-5c%-5c%-5c", ex1, ex2, ex3);
-  printf("\nNumerical equivalents %-5d%-5d%-5d", ex1, ex2, ex3);
-  printf("\n The number %d is the code for the character %c\n", number, number);
+  printf("Character values %-5c%-5c%-5c\n", ex1, ex2, ex3);
+  printf("Numerical equivalents %-5d%-5d%-5d\n", ex1, ex2, ex3);
+  printf("The number %d is the code for the character %c\n", number, number);
   
   return 0;
 }

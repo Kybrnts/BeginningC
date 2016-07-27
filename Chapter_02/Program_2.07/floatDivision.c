@@ -7,7 +7,12 @@ int main() {
     piece_lenght = 0.0f;      /* Lenght of a piece in feet */
   
   piece_lenght = plank_lenght/piece_count;
-  printf("A plank %5.3f long can be cut into %5.3f pieces of %5.3f feet long.",
+  /* division with integer operands always produces an integer result. Unless the left operand of a division is an exact
+   * multiple of the right operand when dividing one integer by another, the result will be inherently inaccurate.
+   * Division with floating-point operands will give you an exact result. At least, a result that is as exact as it can
+   * be with a fixed number of digits of precision.
+   */
+  printf("A plank %5.3f long can be cut into %5.3f pieces of %5.3f feet long.\n",
 	 plank_lenght,
 	 piece_count,
 	 piece_lenght);

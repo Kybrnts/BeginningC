@@ -3,12 +3,12 @@
 
 int main(void) {
   char first = 'T',
-    second = 20;
+    second = 63;
   
-  printf("\nThe first example as a letter looks like this - %c", first);
-  printf("\nThe first example as an integer looks like this - %d", first);
-  printf("\nThe second example as a letter looks like this - %c", second);
-  printf("\nThe second example as a number looks like this - %d", second);
+  printf("The first example as a letter looks like this - %c\n", first);
+  printf("The first example as an integer looks like this - %d\n", first);
+  printf("The second example as a letter looks like this - %c\n", second);
+  printf("The second example as a number looks like this - %d\n", second);
  
   return 0;
 }

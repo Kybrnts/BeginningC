@@ -12,11 +12,11 @@ int main(void) {
    * The compiler will check for further attempts to change its value. It will complain if he finds at least one.
    */
 
-  printf("Input the diameter of the table:");
+  printf("Input the diameter of the table: ");
   scanf("%f", &diameter);
   radius = diameter/2.0f;
   printf("\nThe circumference is %.2f", 2.0f*Pi*radius);
-  printf("\nThe area is %.2f", Pi*radius*radius);
+  printf("\nThe area is %.2f\n", Pi*radius*radius);
 
   return 0;
 }

@@ -6,8 +6,9 @@
  */
 #include <stdio.h> /* This will be reading input from stdin and writing to stdout */
 
-#define FEET_PER_YARD (short)3
-#define INCHES_PER_YARD (short)36
+/* Define two constants of type double */
+#define FEET_PER_YARD 3.0
+#define INCHES_PER_YARD 36.0
 
 int main(void) {
 
@@ -26,7 +27,7 @@ int main(void) {
   printf("                                  ...and inches: ");
   scanf("%ld", &input);
   inches = input;
-  length = feet/(float)FEET_PER_YARD + inches/(float)INCHES_PER_YARD;
+  length = feet/FEET_PER_YARD + inches/INCHES_PER_YARD;
 
   printf("Enter the width of the room, the whole in feet: ");
   scanf("%ld", &input);
@@ -34,13 +35,14 @@ int main(void) {
   printf("                                 ...and inches: ");
   scanf("%ld", &input);
   inches = input;
-  width = feet/(float)FEET_PER_YARD + inches/(float)INCHES_PER_YARD;
+  /* Use implicit conversion to get float values for each division*/
+  width = feet/FEET_PER_YARD + inches/INCHES_PER_YARD;
   
   /* Calculate the area of the room */
   area = length*width;
 
   /* Output the result */
-  printf("The floor area of the room is %.2f square yards.", area);
+  printf("The floor area of the room is %.2f square yards.\n", area);
 
   return 0;
 }

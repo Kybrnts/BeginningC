@@ -2,14 +2,15 @@
 #include <stdio.h>
 
 int main(void) {
-  printf("\nVariables of type \"char\" occupy %d bytes", sizeof(char));
-  printf("\nVariables of type \"short\" occupy %d bytes", sizeof(short));
-  printf("\nVariables of type \"int\" occupy %d bytes", sizeof(int));
-  printf("\nVariables of type \"long\" occupy %d bytes", sizeof(long));
-  printf("\nVariables of type \"long\" occupy %d bytes", sizeof(long));
-  printf("\nVariables of type \"float\" occupy %d bytes", sizeof(float));
-  printf("\nVariables of type \"double\" occupy %d bytes", sizeof(double));
-  printf("\nVariables of type \"long double\" occupy %d bytes", sizeof(long double));
+
+  printf("Variables of type \"char\" occupy %lu bytes\n", sizeof(char));
+  printf("Variables of type \"short\" occupy %lu bytes\n", sizeof(short));
+  printf("Variables of type \"int\" occupy %lu bytes\n", sizeof(int));
+  printf("Variables of type \"long\" occupy %lu bytes\n", sizeof(long));
+  printf("Variables of type \"long\" occupy %lu bytes\n", sizeof(long));
+  printf("Variables of type \"float\" occupy %lu bytes\n", sizeof(float));
+  printf("Variables of type \"double\" occupy %lu bytes\n", sizeof(double));
+  printf("Variables of type \"long double\" occupy %lu bytes\n", sizeof(long double));
 
   return 0;
 }
