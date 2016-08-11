@@ -1,4 +1,4 @@
-/* Program 3.2.1, improved 3.2 */
+/* Program 3.2A, improved 3.2 */
 /*
  * One thing to notice is that floating-point variables aren't ideal for calculations involving money because of the
  * potential rounding that can occur. Providing that the amounts of money are not extremely large, one alternative is to
@@ -22,7 +22,7 @@ int main(void) {
   total_price = quantity*unit_price*(100 - discount)/100;
   dollars = total_price/100;
   cents = total_price%100;
-  printf("\nThe price of %d is $%ld.%ld\n", quantity, dollars, cents);
+  printf("The price of %d is $%ld.%ld\n", quantity, dollars, cents);
   
   return 0;
 }

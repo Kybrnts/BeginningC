@@ -1,6 +1,6 @@
 /* Program 2.11 Finding the limits */
-#include <stdio.h>  /* For command line input and output */
-#include <limits.h> /* For limits on integer types */
+#include <stdio.h>  /* For command line input and output  */
+#include <limits.h> /* For limits on integer types        */
 #include <float.h>  /* For limits on floating-point types */
 
 int main(void) {
@@ -21,7 +21,7 @@ int main(void) {
   /* printf("Variables of type \"unsigned long long\" store values from 0 to %llu\n\n", ULLONG_MAX);                  */
   /* NOTE: It seems that "long long" is not supported by C89 standard (gcc option -std=c89).                          */
   /*       However, we can compile this using C99 standard (gcc option -std=c99) and it also seems that lon long is   */
-  /*       the same as long long is the same as long                                                                  */
+  /*       the same as long (same memory used, and supported values range                                             */
 
   printf("The size of the smallest non-zero value of type \"float\" is %.3e\n", FLT_MIN);
   printf("The size of the largest value of type \"float\" is %.3e\n\n", FLT_MAX);

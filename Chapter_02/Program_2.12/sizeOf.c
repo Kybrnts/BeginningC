@@ -1,10 +1,12 @@
 /* Program 2.12 Finding the size of a type */
 #include <stdio.h>
+#include <stddef.h> /* To check for wide character type size */
 
 int main(void) {
 
   printf("Variables of type \"char\" occupy %lu bytes\n", sizeof(char));
   printf("Variables of type \"short\" occupy %lu bytes\n", sizeof(short));
+  printf("Variables of type \"wchar_t\" occupy %lu bytes\n", sizeof(wchar_t));
   printf("Variables of type \"int\" occupy %lu bytes\n", sizeof(int));
   printf("Variables of type \"long\" occupy %lu bytes\n", sizeof(long));
   printf("Variables of type \"long\" occupy %lu bytes\n", sizeof(long));

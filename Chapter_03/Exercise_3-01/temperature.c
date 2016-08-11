@@ -9,23 +9,22 @@
  * from the value, then multiply by 5, and divide the result by 9.
  */
 #include <stdio.h>
-#define MC 9/5    /* Value of m in y = mx + n for conversion from celsius to farenheit */
-#define NC 32     /* Value of n in previous equation */
-#define MF 5/9    /* Value of m in y = mx + n for conversion from farenheit to celsius */
-#define NF -160/9 /* Value of n in previous equation */
+#define MC 9.0/5    /* Value of m in y = mx + n for conversion from celsius to farenheit */
+#define NC 32       /* Value of n in previous equation */
+#define MF 5.0/9    /* Value of m in y = mx + n for conversion from farenheit to celsius */
+#define NF -160.0/9 /* Value of n in previous equation */
 
 int main(void) {
-
   /* Declare variables of the right types */
-  char unit = 0;        /* Stores an input character */
-  _Bool goahead = 1; /* Stops execution when input a wrong conversion type */
-  double degrees = 0.0, /* Sotres the input degrees */
-    m = 0.0,            /* Value of m in y = mx + n for conversion */
-    n = 0.0;            /* Value of n in the previous equation */
+  char unit = 'c';      /* Stores an input character                          */
+  int goahead = 1;      /* Stops execution when input a wrong conversion type */
+  double degrees = 0.0, /* Sotres the input degrees                           */
+    m = 0.0,            /* Value of m in y = mx + n for conversion            */
+    n = 0.0;            /* Value of n in the previous equation                */
 
   /* Prompt the user to choose the type of conversion */
-  printf("\nPlease enter the unit of the temperature you want to convert from."
-         "\nCelsius (C) or Farenheit (F)?: ");
+  printf("Please enter the unit of the temperature you want to convert from\n"
+         "Celsius (C) or Farenheit (F)?: ");
   scanf("%c", &unit);
 
   /* Try to change the input to lowercase */
@@ -35,36 +34,32 @@ int main(void) {
   /* Verify the selected conversion type */
   switch(unit) {
   case 'c':
-    printf("\nConverting from CELSIUS to FARENHEIT.");
-    m = (double)MC;
-    n = (double)NC;
+    printf("Converting from CELSIUS to FARENHEIT.\n");
+    m = MC;
+    n = NC;
     break;
-
   case 'f':
-    printf("\nConvertinf from FARENHEIT to CELSIUS.");
-    m = (double)MF;
-    n = (double)NF;
+    printf("Convertinf from FARENHEIT to CELSIUS.\n");
+    m = MF;
+    n = NF;
     break;
-
   default:           /* Wrong conversion type */
-    printf("\nWrong conversion type! Try again.");
+    printf("Wrong conversion type! Try again.\n");
     goahead = 0;  /* Prevent further execution */
   }
   /* From now on when goahead is set tu true, if "unit" is not set to 'c', it is set to 'f' */
-  
-  /* Continue with further calculations if necessary */
+
+  /* Continue with further calculations if possible */
   if(goahead) {
     /* Prompt the user to enter the temperature */
-    printf("\nPlease enter the temperature in %s degrees: ",
+    printf("Please enter the temperature in %s degrees: ",
 	   unit == 'c' ? "CELSIUS" : "FARENHEIT");
     /* Read temperature from keyboard */
-    scanf("%lf", &degrees);
-        
+    scanf("%lf", &degrees);        
     /* Output the result */
-    printf("\nTemperature in %s is %.2f degrees.", 
+    printf("Temperature in %s is %.1f degrees.\n", 
 	   unit == 'c' ? "FARENHEIT" : "CELSIUS",
 	   m*degrees + n);
   }
-
   return 0;
 }

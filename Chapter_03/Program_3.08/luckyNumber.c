@@ -5,7 +5,7 @@ int main(void) {
   int choice = 0; /* The number chosen */
 
   /* Get the choice input */
-  printf("\nPick a number between 1 and 10 and yo umay win a prize!");
+  printf("Pick a number between 1 and 10 and yo umay win a prize! ");
   scanf("%d", &choice);
   
   /* Check for an invalid selection */
@@ -13,30 +13,22 @@ int main(void) {
     choice = 11; /* Selects the invalid choice message */
   
   switch(choice) {
-
   case 7:
-    printf("\nCongratulations!");
-    printf("\nYou win the collected works of Amos Gruntfuttock.");
+    printf("Congratulations!\n");
+    printf("You win the collected works of Amos Gruntfuttock.\n");
     break; /* Jumps to the end of the block */
-
   case 2:
-    printf("\nYou win the folding thermometer-pen-watch-umbrella.");
-    break; /* Jumps to the end of the block */
-    
+    printf("You win the folding thermometer-pen-watch-umbrella.\n");
+    break; /* Jumps to the end of the block */    
   case 8:
-    printf("\nYou win the lifetime supply of aspirin tablets.");
+    printf("You win the lifetime supply of aspirin tablets.\n");
     break; /* Jumps to the end of the block */
-    
   case 11:
-    printf("\nTry between 1 and 10. You wasted your guess.");
-    /* No break - so continue to the next statement */    
-    
+    printf("Try between 1 and 10. You wasted your guess.\n");
+    /* No break - so continue to the next statement */        
   default:
-    printf("\nSorry, you loose.\n");
-    break; /* Defensive break - in case of new cases - */
-    
-  }
-    
-
+    printf("Sorry, you loose.\n");
+    break; /* Defensive break - in case of new cases - */    
+  }    
   return 0;
 }

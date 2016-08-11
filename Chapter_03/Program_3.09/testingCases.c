@@ -9,15 +9,15 @@ int main(void) {
   
   switch(answer) {
   case 'y': case 'Y':
-    printf("\nYou responded in the affirmative.");
+    printf("You responded in the affirmative.\n");
     break;
 
   case 'n': case 'N':
-    printf("\nYou responded in the negative.");
+    printf("You responded in the negative.\n");
     break;
 
   default:
-    printf("\nYou did not respond correctly...");
+    printf("You did not respond correctly...\n");
     break;
   }
   return 0;
