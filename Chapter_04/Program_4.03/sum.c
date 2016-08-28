@@ -2,20 +2,16 @@
 #include <stdio.h>
 
 int main(void) {
-  long sum = 0L; /* Stores the sum of the integers */
-  int count = 0; /* The number of integers to be summed */
-
-
+  unsigned long sum = 0UL; /* Stores the sum of the integers      */
+  unsigned count = 0U,     /* The number of integers to be summed */
+    i;                     /* Loop variable                       */
   /* Read the number of integers to be summed */
-  printf("\nEnter the number of integers you want to sum:");
-  scanf(" %d", &count);
-  
+  printf("Enter the number of integers you want to sum: ");
+  scanf("%u", &count);  
   /* Sum integers from 1 to count */
-  for(int i = 1; i <= count; i++)
+  for(i = 1U; i <= count; i++)
     sum += i;
-
   /* Output the result */
-  printf("\nTotal of first %d numbers is %ld\n", count, sum);
-
+  printf("Total of first %d numbers is %ld\n", count, sum);
   return 0;
 }

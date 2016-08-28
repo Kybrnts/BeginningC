@@ -45,14 +45,18 @@ int main(void) {
   default : /* Operation is illegal if we get to this point */
     printf("\a%s!\n", "Illegal operation");
   }
-  /* Flush the STDIN */
-  while(getchar() != '\n');
-  /* Although we are not yet ready to understand this, it was necessary to clear any characters left behind after last 
-   * scanf() call. In essence, it just keep reading characters until an EOL is found.
-   */
   /* Prompt the user for trying again */
   printf("Do you feel like trying again? (Y/N): ");
-  scanf("%c", &retry);
+  scanf(" %c", &retry);
+  /* /!\ - Here the leading space in the format specifier string is CRITICAL - /!\
+   * We must bare in mind that whenever we enter a character for a scanf() call, besides entering the character itself,
+   * we also press RET. This keypress sends a '\n' to the STDIN which will be scanned by any subsecuent scanf() call. If
+   * that call scans for a character (instead of a numeric type), it will assign the '\n' to it. 
+   * If we want to skip this EOL, we can "consume" any number of previously non read whitespace chars with a leading
+   * whitespace in the format specifier string.
+   * See below link for a larger explanation on the subject: 
+   * http://stackoverflow.com/questions/7166197/why-does-a-space-in-my-scanf-statement-make-a-difference
+   */
   /* Try to change the input to lowercase */
   if(retry <= 'a')
     retry += 'a' - 'A';

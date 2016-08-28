@@ -2,20 +2,20 @@
 #include <stdio.h>
 
 int main(void) {
-  long sum = 0L; /* The sum of integers */
-  int i = 1,     /* Indexes through integers */
-    count = 0;   /* The count of integers to be summed */
+  unsigned long sum = 0UL ; /* The sum of integers                */
+  unsigned i = 1U,          /* Indexes through integers           */
+    count = 0U;             /* The count of integers to be summed */
 
   /* Get the count of the number of integers to sum */
-  printf("\nEnter the number of integers you want to sum: ");
-  scanf(" %d", &count);
+  printf("Enter the number of integers you want to sum: ");
+  scanf("%u", &count);
 
   /* Sum the integers from 1 to count */
   while(i <= count)
     sum += i++;
 
   /* Output the result */
-  printf("Total of the first %d numbers is %ld\n", count, sum);
+  printf("Total of the first %u numbers is %lu\n", count, sum);
 
   return 0;
 }

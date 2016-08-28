@@ -1,105 +1,46 @@
 /* Exercise 4-5 */
-/*
- * Modify the guessing game implemented in Program 4.7 so that the program will continue with an option to play another
- * game when the player fails to guess the number correctly and will allow as many games as the player requires.
+/* Modify the Simon Says game implemented in Program 4.7A so that the program will continue with an option to play
+ * another game when the player fails to guess the number correctly and will allow as many games as the player requires.
  */
-/* Program 4.12 Simple Simon */
-#include <stdio.h>   /* For input and output */
-#include <ctype.h>   /* For toupper() function */
-#include <stdbool.h> /* For bool, true, false */
-#include <stdlib.h>  /* For rand(), and srand() functions */
-#include <time.h>    /* For time() function */
+#include <stdio.h>
+#include <stdlib.h> /* Provides rand() and srand() */
+#include <time.h>   /* Provides time()             */
+#include <ctype.h>  /* Provides tolower()          */
+
+#define MAXTRIES_DFLT 3U /* Max guess tries defalut         */
+#define LIMIT_DFLT 20U   /* Default limit for random values */
 
 int main(void) {
-  
-  char another_game = 'Y'; /* Records if another game is to be played */
-  bool correct = true;     /* True if correct sequence entered, false otherwise */
-  int counter = 0;         /* Number of sequences to be entered successfully */
-  int sequence_length = 0; /* Number of digits in a squence */
-  time_t seed = 0;         /* Seed value for random number sequence */
-  int number = 0;          /* Stores and input digit */
-  int i;                   /* Inner loop control variable */
-  time_t now = 0;          /* Stores current time - seed for random values */
-  int time_taken = 0;      /* Time taken for game in seconds */
-  
 
-  /* Describe how the game is played */
-  printf("\nTo play Simple Simon, ");
-  printf("watch the screen for a sequence of digits.");
-  printf("\nWatch carefully, as the digits are only displayed"
-	 " for a second");
-  printf("\nThe computer will remove them, and then promt you ");
-  printf("to enter the same squence.");
-  printf("\nWhen you do, you must put spaces between the digits. \n");
-  printf("\nGood luck!\nPress Enter to play\n");
-  scanf("%c", &another_game);
+  unsigned choosen = 0U,             /* Stores the lucky number              */
+    count;                           /* Tries counter                        */
+  long guess = 0U;                   /* Stores a guess                       */
+  const unsigned LIMIT = LIMIT_DFLT, /* Upper limit for pseudo-random values */
+    MAXTRIES = MAXTRIES_DFLT;        /* Maximum number of tries              */
+  char answr = 'n';                  /* Stores the "play again" user answer  */
 
-  /* One outer looop iteration is one game */
-  do {
-    correct = true;       /* By default indicates correct sequence entered */
-    counter = 0;          /* Initialize count of number of successfull tries */
-    sequence_length = 2;  /* Initial length of a digit sequence */
-    time_taken = clock(); /* Record current time as start of game */
-    
-    /* Rest of the declarations for the program */
-    
-    /* Inner loop continues as long as squence are entered correctly */
-    while(correct) {
-      
-      /* On every third successfull try, increase the sequence lenght */
-      sequence_length += counter++%3 == 0;
-
-      /* Set the seed to be the number of seconds since Jan 1, 1970 */
-      seed = time(NULL);
-      
-      now = clock(); /* Record the start time for sequence */
-
-      /* Generate a sequence of numbers and display the number */
-      srand((unsigned int)seed);  /* Initialize the random sequence */
-      for(i = 1; i <= sequence_length; i++)
-	printf("%d ", rand()%10); /* Output a random digit */
-      
-      /* Wait one second */
-      for( ; clock() - now < CLOCKS_PER_SEC; );
-      
-      /* Now ovewrite the digit sequence */
-      printf("\r");    /* Go to beginning of the line */
-      for(i = 1; i <= sequence_length; i++)
-	printf("  ");  /* Output two spaces */
-
-      if(counter == 1) /* Only output message for the first try */
-	printf("\nNow you enter the sequence - don't forget"
-	       " the spaces\n");
+  srand(time(NULL));             /* Use clock value as starting seed. Use same seed for all games */
+  printf("This is a guessing game.\n");
+  do {                           /* Main loop. Each iteration is a complete game                  */
+    choosen = 1U + rand()%LIMIT; /* Random int 1 to limit                                         */
+    printf("I have choosen a number between 1 and %u which you must guess.\n", LIMIT);
+    for(count = MAXTRIES; count > 0U ; --count){
+      printf("You have %u tr%s left.\n", count, count == 1 ? "y" : "ies");
+      printf("Enter a guess: ");
+      scanf("%ld", &guess);
+      if(choosen > 0 && guess == (unsigned)choosen) {
+	printf("You guessed it!\n");
+	break;                  /* Do not exit the program as before, just the inner loop         */
+      }else if(guess < 1 || guess > LIMIT)
+	printf("I said between 1 and %u.\n", LIMIT);
       else
-	printf("\r"); /* Back to the beginning of the line */
-      
-      /* Prompt for the input sequence */
-      
-      /* Check the input sequence of digits against the original */
-      srand((unsigned int)seed);     /* Restart the reandom sequence */
-      
-      for(i = 1; i <= sequence_length; i++) {
-	scanf("%d", &number);       /* Read an input number */
-	if(number != rand() % 10) { /* Compare against random digit */
-	  correct = false;          /* Incorrect entry */
-	  break;                    /* No need to check further */
-	}
-      }
-      printf("%s\n", correct ? "Correct!" : "Wrong!");
+	printf("Sorry. %ld is wrong. My number is %s than that.\n", guess, choosen > guess ? "greater" : "less");
     }
-    
-    /* Calculate the total time to play in seconds */
-    time_taken = (clock() - time_taken)/CLOCKS_PER_SEC;
-
-    /* Output the game score */
-    printf("\n\n Your score is %d", --counter * 100 / time_taken);
-
-    fflush(stdin);
-    
-    /* Check if a new game is required */
-    printf("\nDo you want to play again (y/n)? ");
-    scanf("%c", &another_game);
-
-  } while(toupper(another_game) == 'Y');
+    if(count == 0U)            /* If we reached the maximum tries, then we must've failed         */
+      printf("You have entered %u tries and failed. The number was %d\n", MAXTRIES, choosen);
+                               /* Prompt the user to play again                                   */
+    printf("Would you like to play again? (y/n): ");
+    scanf(" %c", &answr);      /* Read any whitespaces and a character                            */
+  }while(tolower(answr) == 'y');
   return 0;
 }
